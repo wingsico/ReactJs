@@ -9,6 +9,7 @@ class CommentApp extends Component {
       comments: []
     }
   }
+  
   handleSubmitComment(comment) {
     if (!comment) return
     if (!comment.username) return alert('请输入用户名')
