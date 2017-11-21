@@ -4,6 +4,7 @@ import './App.css';
 import Header from './header'
 import Footer from './Footer'
 import Users from './Users'
+import Clock from './test/Clock'
 
 const users = [
   { username: 'Jerry', age: 21, gender: 'male' },
@@ -18,6 +19,13 @@ const lessons = [
   { title: 'Lesson 4: title', description: 'Lesson 4: description' }
 ]
 class App extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      isShowClock: true
+    }
+  }
   render() {   
     return (
       <div className="App">
@@ -28,6 +36,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        {this.state.isShowClock ? <Clock /> : null }
+        <button onClick={() => {this.setState({ isShowClock: !this.state.isShowClock})}}>使时钟显示或隐藏</button>
         <Title />
         <Header />
         <hr />
