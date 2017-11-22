@@ -26,6 +26,7 @@ class App extends Component {
       isShowClock: true
     }
   }
+
   render() {   
     return (
       <div className="App">
@@ -33,7 +34,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Helle React!</h1>
         </header>
-        <p className="App-intro">
+        <p className="App-intro" ref={p => this.para = p}>
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         {this.state.isShowClock ? <Clock /> : null }
@@ -52,6 +53,17 @@ class App extends Component {
         <Footer/>
       </div>
     );
+  }
+
+  componentDidMount() {
+    let opacity_
+    this.timer = setInterval(() => {
+      console.log(opacity_)
+      opacity_ = getComputedStyle(this.para).opacity
+      opacity_ <= 0 && clearInterval(this.timer)
+      opacity_ -= 0.01
+      this.para.style.opacity = opacity_
+    }, 13)
   }
 }
 
