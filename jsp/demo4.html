@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>生命周期案例</title>
+  <script src="./common/react.js"></script>
+  <script src="./common/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+</head>
+
+<body>
+  <div id="demo"></div>
+  <script type="text/babel">
+  class Hello extends React.Component {
+    constructor() {
+      super()
+      this.state = {
+        opacity: 1.0
+      }
+    }
+
+    componentDidMount () {
+      setInterval(() => {
+        let opacity = this.state.opacity
+
+        opacity -= .05
+        if (opacity < 0) {
+          opacity = 1.0
+        }
+        this.setState({
+          opacity: opacity
+        })
+      }, 100);
+    }
+
+    render () {
+      return (
+        <div style={{opacity: this.state.opacity}}>
+          <h2>Hello {this.props.name}, {this.props.children}</h2>
+        </div>
+      )
+    }
+  }
+    
+  ReactDOM.render(<Hello/>, document.getElementById('demo'))
+  </script>
+</body>
+</html>

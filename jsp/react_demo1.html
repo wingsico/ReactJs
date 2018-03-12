@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="./common/react.js"></script>
+  <script src="./common/react-dom.js"></script>
+  <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
 </head>
 <body>
-$END$
+<div id="root"></div>
+<script type="text/babel">
+  let names = ['world', 'react', 'pig']
+  let jsxNames = [<div key="1">I love you</div>, <div key="2">I love you</div>, <div key="3">I love you</div>]
+
+  let HelloWorld = React.createClass({
+    render() {
+      return (
+        <div>
+          {names.map((name) => {
+            return (
+              <div key={name}>{this.props.name + ' ' + name}</div>
+            )
+          })}
+          <Hello/>
+        </div>
+      )
+    }
+  })
+
+  let Hello = React.createClass({
+    render () {
+      return (<div>{jsxNames}</div>)
+    }
+  })
+
+  ReactDOM.render(
+    <HelloWorld name="jsp"/>,
+    document.getElementById('root')
+  )
+</script>
 </body>
 </html>

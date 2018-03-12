@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <style lang="text/css">
+    #root {
+      font: italic;
+    }
+  </style>
   <script src="./common/react.js"></script>
   <script src="./common/react-dom.js"></script>
   <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
 </head>
+
 <body>
   <div id="root"></div>
-  <script type="text/babel">
-    let HelloComponent = React.createClass({
-      getInitialState () {
-        return {enable: false}
-      },
-      handleClick () {
-        this.setState({
-          enable: !this.state.enable
-        })
-      },
-      render () {
-        return (
-          <div>
-            <input type="text" disabled={this.state.enable}/>
-            <button onClick={this.handleClick()}></button>
-          </div>
-        )
-      }
-    })
+  <script src='./common/createElement.js'></script>
+  <script src='./common/render.js'></script>
+  <script> 
+    
+    let helloComponent = createElement('div', null, createElement('p', {
+      class: 'hello',
+      id: 'bb'
+    }, "nihao"), createElement('p', {
+      class: 'hello',
+      id: 'bb'
+    }, "nihao"), createElement('div', null, createElement('p', {
+      class: 'hello',
+      id: 'bb'
+    }, "nihao")))
+
+    render(helloComponent, document.getElementById("root"))
+
   </script>
 </body>
+
 </html>
